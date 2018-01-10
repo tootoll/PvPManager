@@ -147,8 +147,13 @@ public class EntityListener implements Listener {
 				if (Bukkit.getPluginManager().isPluginEnabled("DisguiseCraft") && DisguiseCraft.getAPI().isDisguised(attacker)) {
 					DisguiseCraft.getAPI().undisguisePlayer(attacker);
 				}
-				if (Bukkit.getPluginManager().isPluginEnabled("LibsDisguises") && DisguiseAPI.isDisguised(attacker)) {
-					DisguiseAPI.undisguiseToAll(attacker);
+				if (Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")){
+					if (DisguiseAPI.isDisguised(attacker)) {
+						DisguiseAPI.undisguiseToAll(attacker);
+					}
+					if (DisguiseAPI.isDisguised(defender)) {
+						DisguiseAPI.undisguiseToAll(defender);
+					}
 				}
 			}
 			if (Settings.isDisableInvisibility() && attacker.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
